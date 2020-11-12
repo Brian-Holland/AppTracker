@@ -1,7 +1,14 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
 //initialize express
 const app = express();
+
+//connect to DB
+connectDB();
+
+//initialize body-parser
+app.use(express.json({ extended: false }));
 
 //define routes
 app.use('/api/users', require('./routes/users'));
