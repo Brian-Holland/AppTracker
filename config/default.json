@@ -1,4 +1,0 @@
-{
-	"mongoURI": "mongodb+srv://brian123:brian123@app-tracker.lbtlg.mongodb.net/App-Tracker?retryWrites=true&w=majority",
-	"jwtSecret": "thesecret"
-}
