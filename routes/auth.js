@@ -30,7 +30,8 @@ router.post(
 		}
 
 		//pull email and password from req.body
-		const { email, password } = req.body;
+		const { password } = req.body;
+		const email = req.body.email.toLowerCase();
 
 		try {
 			//attempt to find user with email entered
