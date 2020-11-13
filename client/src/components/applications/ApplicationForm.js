@@ -1,8 +1,30 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ApplicationContext from '../../context/application/applicationContext';
 
 const ApplicationForm = () => {
 	const applicationContext = useContext(ApplicationContext);
+
+	const { addApplication, updateApplication, current, clearCurrent } = applicationContext;
+
+	useEffect(
+		() => {
+			if (current !== null) {
+				setApplication(current);
+			} else {
+				setApplication({
+					company: '',
+					positionTitle: '',
+					refNumber: '',
+					appliedOn: '',
+					appUrl: '',
+					contactName: '',
+					contactNumber: '',
+					notes: ''
+				});
+			}
+		},
+		[ applicationContext, current ]
+	);
 
 	const [ application, setApplication ] = useState({
 		company: '',
@@ -25,8 +47,14 @@ const ApplicationForm = () => {
 	//handle submit
 	const onSubmit = (e) => {
 		e.preventDefault();
-		//add new app
-		applicationContext.addApplication(application);
+		if (current === null) {
+			//add new app
+			addApplication(application);
+		} else {
+			updateApplication(application);
+		}
+		clearAll();
+
 		//set form back to empty
 		setApplication({
 			company: '',
@@ -40,9 +68,13 @@ const ApplicationForm = () => {
 		});
 	};
 
+	const clearAll = () => {
+		clearCurrent();
+	};
+
 	return (
 		<form onSubmit={onSubmit}>
-			<h1 className="text-primary text-center">Add Application Info</h1>
+			<h1 className="text-primary text-center">{current ? 'Edit Application Info' : 'Add Application Info'}</h1>
 			<input type="text" placeholder="Company" name="company" value={company} onChange={onChange} />
 			<input type="text" placeholder="Job Title" name="positionTitle" value={positionTitle} onChange={onChange} />
 			<input type="text" placeholder="Job ID" name="refNumber" value={refNumber} onChange={onChange} />
@@ -58,8 +90,19 @@ const ApplicationForm = () => {
 			/>
 			<textarea placeholder="Notes" name="notes" value={notes} onChange={onChange} />
 			<div>
-				<input type="submit" value="Add Application" className="btn btn-primary btn-block" />
+				<input
+					type="submit"
+					value={current ? 'Update Application' : 'Add Application'}
+					className="btn btn-primary btn-block"
+				/>
 			</div>
+			{current && (
+				<div>
+					<button className="btn btn-light btn-block" onClick={clearAll}>
+						Clear
+					</button>
+				</div>
+			)}
 		</form>
 	);
 };

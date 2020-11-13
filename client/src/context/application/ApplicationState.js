@@ -6,7 +6,7 @@ import {
 	ADD_APPLICATION,
 	DELETE_APPLICATION,
 	SET_CURRENT,
-	CLEAR_CRRENT,
+	CLEAR_CURRENT,
 	UPDATE_APPLICATION,
 	FILTER_APPLICATIONS,
 	CLEAR_FILTER
@@ -35,7 +35,8 @@ const ApplicationState = (props) => {
 				positionTitle: 'Frontend Engineer',
 				notes: 'applied through LinkedIn EasyApply'
 			}
-		]
+		],
+		current: null
 	};
 	const [ state, dispatch ] = useReducer(applicationReducer, initialState);
 
@@ -50,11 +51,17 @@ const ApplicationState = (props) => {
 		dispatch({ type: DELETE_APPLICATION, payload: id });
 	};
 	//set current app
-
+	const setCurrent = (application) => {
+		dispatch({ type: SET_CURRENT, payload: application });
+	};
 	//clear current app
-
+	const clearCurrent = () => {
+		dispatch({ type: CLEAR_CURRENT });
+	};
 	//update app
-
+	const updateApplication = (application) => {
+		dispatch({ type: UPDATE_APPLICATION, payload: application });
+	};
 	//filter apps
 
 	//clear filter
@@ -63,8 +70,12 @@ const ApplicationState = (props) => {
 		<ApplicationContext.Provider
 			value={{
 				applications: state.applications,
+				current: state.current,
 				addApplication,
-				deleteApplication
+				deleteApplication,
+				setCurrent,
+				clearCurrent,
+				updateApplication
 			}}
 		>
 			{props.children}

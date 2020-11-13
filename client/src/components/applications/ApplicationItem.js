@@ -5,12 +5,13 @@ import ApplicationContext from '../../context/application/applicationContext';
 const ApplicationItem = ({ application }) => {
 	const applicationContext = useContext(ApplicationContext);
 
-	const { deleteApplication } = applicationContext;
+	const { deleteApplication, setCurrent, clearCurrent } = applicationContext;
 
 	const { id, company, positionTitle, refNumber, appliedOn, appUrl, contactNumber, contactName, notes } = application;
 
 	const onDelete = () => {
 		deleteApplication(id);
+		clearCurrent();
 	};
 
 	return (
@@ -26,7 +27,9 @@ const ApplicationItem = ({ application }) => {
 				{notes && <li>Notes: {notes}</li>}
 			</ul>
 			<p>
-				<button className="btn btn-primary btn-sm">Edit</button>
+				<button className="btn btn-primary btn-sm" onClick={() => setCurrent(application)}>
+					Edit
+				</button>
 				<button className="btn btn-danger btn-sm" onClick={onDelete}>
 					Delete
 				</button>
