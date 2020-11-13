@@ -40,9 +40,15 @@ const ApplicationState = (props) => {
 	const [ state, dispatch ] = useReducer(applicationReducer, initialState);
 
 	//add app
+	const addApplication = (application) => {
+		application.id = uuidv4();
+		dispatch({ type: ADD_APPLICATION, payload: application });
+	};
 
 	//delete app
-
+	const deleteApplication = (id) => {
+		dispatch({ type: DELETE_APPLICATION, payload: id });
+	};
 	//set current app
 
 	//clear current app
@@ -56,7 +62,9 @@ const ApplicationState = (props) => {
 	return (
 		<ApplicationContext.Provider
 			value={{
-				applications: state.applications
+				applications: state.applications,
+				addApplication,
+				deleteApplication
 			}}
 		>
 			{props.children}

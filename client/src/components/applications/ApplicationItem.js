@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import ApplicationContext from '../../context/application/applicationContext';
 
 const ApplicationItem = ({ application }) => {
-	const { company, positionTitle, refNumber, appliedOn, appUrl, contactNumber, contactName, notes } = application;
+	const applicationContext = useContext(ApplicationContext);
+
+	const { deleteApplication } = applicationContext;
+
+	const { id, company, positionTitle, refNumber, appliedOn, appUrl, contactNumber, contactName, notes } = application;
+
+	const onDelete = () => {
+		deleteApplication(id);
+	};
 
 	return (
 		<div className="card bg-light">
@@ -17,10 +27,16 @@ const ApplicationItem = ({ application }) => {
 			</ul>
 			<p>
 				<button className="btn btn-primary btn-sm">Edit</button>
-				<button className="btn btn-danger btn-sm">Delete</button>
+				<button className="btn btn-danger btn-sm" onClick={onDelete}>
+					Delete
+				</button>
 			</p>
 		</div>
 	);
+};
+
+ApplicationItem.propTypes = {
+	application: PropTypes.object.isRequired
 };
 
 export default ApplicationItem;

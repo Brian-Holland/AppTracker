@@ -26,7 +26,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-	title: 'App Tracker',
+	title: 'AppTracker',
 	icon: 'far fa-newspaper'
 };
 
