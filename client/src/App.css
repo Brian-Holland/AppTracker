@@ -2,10 +2,10 @@
 
 /* Global Styles */
 :root {
-	--primary-color: #003699;
+	--primary-color: #244075;
 	--dark-color: #333333;
 	--light-color: #f4f4f4;
-	--danger-color: #dc3545;
+	--danger-color: #c22d3c;
 	--success-color: #28a745;
 }
 
@@ -18,7 +18,7 @@
 body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 1rem;
-	line-height: 1.6;
+	line-height: 1.4;
 	background-color: #fff;
 	color: #333;
 }
@@ -213,6 +213,10 @@ img {
 	margin-right: 0.2rem;
 }
 
+.h2 {
+	font-size: 1.6rem;
+}
+
 .badge {
 	font-size: 0.8rem;
 	padding: 0.2rem 0.7rem;
@@ -295,7 +299,7 @@ img {
 
 /* Forms */
 input {
-	margin: 1.2rem 0;
+	margin: 1rem 0;
 }
 
 .form-text {

@@ -36,7 +36,8 @@ const ApplicationState = (props) => {
 				notes: 'applied through LinkedIn EasyApply'
 			}
 		],
-		current: null
+		current: null,
+		filtered: null
 	};
 	const [ state, dispatch ] = useReducer(applicationReducer, initialState);
 
@@ -63,19 +64,28 @@ const ApplicationState = (props) => {
 		dispatch({ type: UPDATE_APPLICATION, payload: application });
 	};
 	//filter apps
+	const filterApplications = (text) => {
+		dispatch({ type: FILTER_APPLICATIONS, payload: text });
+	};
 
 	//clear filter
+	const clearFilter = () => {
+		dispatch({ type: CLEAR_FILTER });
+	};
 
 	return (
 		<ApplicationContext.Provider
 			value={{
 				applications: state.applications,
 				current: state.current,
+				filtered: state.filtered,
 				addApplication,
 				deleteApplication,
 				setCurrent,
 				clearCurrent,
-				updateApplication
+				updateApplication,
+				filterApplications,
+				clearFilter
 			}}
 		>
 			{props.children}

@@ -37,6 +37,25 @@ export default (state, action) => {
 				...state,
 				current: null
 			};
+		case FILTER_APPLICATIONS:
+			return {
+				...state,
+				filtered: state.applications.filter((application) => {
+					const regex = new RegExp(`${action.payload}`, 'gi');
+					return (
+						(application.company && application.company.match(regex)) ||
+						(application.positionTitle && application.positionTitle.match(regex)) ||
+						(application.refNumber && application.refNumber.match(regex)) ||
+						(application.contactName && application.contactName.match(regex)) ||
+						(application.notes && application.notes.match(regex))
+					);
+				})
+			};
+		case CLEAR_FILTER:
+			return {
+				...state,
+				filtered: null
+			};
 		default:
 			return state;
 	}

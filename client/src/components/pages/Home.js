@@ -1,6 +1,7 @@
 import React from 'react';
 import Applications from '../applications/Applications';
 import ApplicationForm from '../applications/ApplicationForm';
+import ApplicationFilter from '../applications/ApplicationFilter';
 
 const Home = () => {
 	return (
@@ -9,6 +10,7 @@ const Home = () => {
 				<ApplicationForm />
 			</div>
 			<div>
+				<ApplicationFilter />
 				<Applications />
 			</div>
 		</div>
