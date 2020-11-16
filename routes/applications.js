@@ -14,7 +14,7 @@ router.get('/', auth, async (req, res) => {
 		const applications = await Application.find({ user: req.user.id }).sort({ date: -1 });
 		res.json(applications);
 	} catch (err) {
-		console.error(error.message);
+		console.error(err.message);
 		res.status(500).send('Server error');
 	}
 });

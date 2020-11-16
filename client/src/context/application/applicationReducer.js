@@ -1,31 +1,51 @@
 import {
 	ADD_APPLICATION,
 	DELETE_APPLICATION,
+	GET_APPLICATIONS,
+	APPLICATION_ERROR,
 	SET_CURRENT,
 	CLEAR_CURRENT,
 	UPDATE_APPLICATION,
 	FILTER_APPLICATIONS,
-	CLEAR_FILTER
+	CLEAR_FILTER,
+	CLEAR_APPLICATIONS
 } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
+		case GET_APPLICATIONS:
+			return {
+				...state,
+				applications: action.payload,
+				loading: false
+			};
 		case ADD_APPLICATION:
 			return {
 				...state,
-				applications: [ ...state.applications, action.payload ]
+				applications: [ action.payload, ...state.applications ],
+				loading: false
 			};
 		case UPDATE_APPLICATION:
 			return {
 				...state,
 				applications: state.applications.map(
-					(application) => (application.id === action.payload.id ? action.payload : application)
-				)
+					(application) => (application._id === action.payload._id ? action.payload : application)
+				),
+				loading: false
 			};
 		case DELETE_APPLICATION:
 			return {
 				...state,
-				applications: [ ...state.applications.filter((application) => application.id !== action.payload) ]
+				applications: [ ...state.applications.filter((application) => application._id !== action.payload) ],
+				loading: false
+			};
+		case CLEAR_APPLICATIONS:
+			return {
+				...state,
+				applications: null,
+				filtered: null,
+				error: null,
+				current: null
 			};
 		case SET_CURRENT:
 			return {
@@ -55,6 +75,11 @@ export default (state, action) => {
 			return {
 				...state,
 				filtered: null
+			};
+		case APPLICATION_ERROR:
+			return {
+				...state,
+				error: action.payload
 			};
 		default:
 			return state;

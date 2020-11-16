@@ -77,8 +77,15 @@ const ApplicationForm = () => {
 			<h1 className="h2 text-primary text-center">
 				{current ? 'Edit Application Info' : 'Add Application Info'}
 			</h1>
-			<input type="text" placeholder="Company" name="company" value={company} onChange={onChange} />
-			<input type="text" placeholder="Job Title" name="positionTitle" value={positionTitle} onChange={onChange} />
+			<input type="text" placeholder="Company" name="company" value={company} onChange={onChange} required />
+			<input
+				type="text"
+				placeholder="Job Title"
+				name="positionTitle"
+				value={positionTitle}
+				onChange={onChange}
+				required
+			/>
 			<input type="text" placeholder="Job ID" name="refNumber" value={refNumber} onChange={onChange} />
 			<input type="date" placeholder="Date Applied" name="appliedOn" value={appliedOn} onChange={onChange} />
 			<input type="text" placeholder="Application URL" name="appUrl" value={appUrl} onChange={onChange} />

@@ -47,7 +47,7 @@ router.post(
 
 			//if no user with that email, throw 400 error
 			if (!user) {
-				return res.status(400).json({ msg: 'Invalid credentials.' });
+				return res.status(400).json({ msg: 'Invalid credentials' });
 			}
 
 			//check if password entered matches password with bcrypt

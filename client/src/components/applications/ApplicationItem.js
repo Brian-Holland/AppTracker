@@ -7,10 +7,20 @@ const ApplicationItem = ({ application }) => {
 
 	const { deleteApplication, setCurrent, clearCurrent } = applicationContext;
 
-	const { id, company, positionTitle, refNumber, appliedOn, appUrl, contactNumber, contactName, notes } = application;
+	const {
+		_id,
+		company,
+		positionTitle,
+		refNumber,
+		appliedOn,
+		appUrl,
+		contactNumber,
+		contactName,
+		notes
+	} = application;
 
 	const onDelete = () => {
-		deleteApplication(id);
+		deleteApplication(_id);
 		clearCurrent();
 	};
 
@@ -18,13 +28,42 @@ const ApplicationItem = ({ application }) => {
 		<div className="card bg-light">
 			<h3 className="text-primary text-left">{company} </h3>
 			<ul className="list">
-				<li>Job Title: {positionTitle}</li>
-				{refNumber && <li>Job ID: {refNumber}</li>}
-				{appliedOn && <li>Applied On: {appliedOn}</li>}
-				{appUrl && <li>Job URL: {appUrl}</li>}
-				{contactName && <li>Contact Name: {contactName}</li>}
-				{contactNumber && <li>Job ID: {contactNumber}</li>}
-				{notes && <li>Notes: {notes}</li>}
+				<li>
+					<strong>Job Title</strong>: {positionTitle}
+				</li>
+				{refNumber && (
+					<li>
+						<strong>Job ID</strong>: {refNumber}
+					</li>
+				)}
+				{appliedOn && (
+					<li>
+						<strong>Applied On</strong>: {appliedOn}
+					</li>
+				)}
+				{appUrl && (
+					<li>
+						<strong>Job URL</strong>:{' '}
+						<a href={appUrl} target="_blank">
+							{appUrl}
+						</a>
+					</li>
+				)}
+				{contactName && (
+					<li>
+						<strong>Contact Name</strong>: {contactName}
+					</li>
+				)}
+				{contactNumber && (
+					<li>
+						<strong>Job ID</strong>: {contactNumber}
+					</li>
+				)}
+				{notes && (
+					<li>
+						<strong>Notes</strong>: {notes}
+					</li>
+				)}
 			</ul>
 			<p>
 				<button className="btn btn-primary btn-sm" onClick={() => setCurrent(application)}>

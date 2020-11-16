@@ -36,7 +36,7 @@ router.post(
 
 			//if user with email exists, throw error
 			if (user) {
-				res.status(400).json({ msg: 'User alreay exists' });
+				return res.status(400).json({ msg: 'User already exists' });
 			}
 
 			//create new instance of user using req.body info
