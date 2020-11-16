@@ -17,7 +17,7 @@ const ApplicationSchema = mongoose.Schema({
 		type: String
 	},
 	appliedOn: {
-		type: Date
+		type: String
 	},
 	appUrl: {
 		type: String

@@ -31,12 +31,12 @@ const Navbar = ({ title, icon }) => {
 		<Fragment>
 			<li>
 				<Link to="/register">
-					<i class="fas fa-user-plus" /> Register
+					<i className="fas fa-user-plus" /> Register
 				</Link>
 			</li>
 			<li>
 				<Link to="/login">
-					<i class="fas fa-user" /> Login
+					<i className="fas fa-user" /> Login
 				</Link>
 			</li>
 		</Fragment>

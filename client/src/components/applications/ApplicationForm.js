@@ -87,7 +87,7 @@ const ApplicationForm = () => {
 				required
 			/>
 			<input type="text" placeholder="Job ID" name="refNumber" value={refNumber} onChange={onChange} />
-			<input type="date" placeholder="Date Applied" name="appliedOn" value={appliedOn} onChange={onChange} />
+			<input type="text" placeholder="Date Applied" name="appliedOn" value={appliedOn} onChange={onChange} />
 			<input type="text" placeholder="Application URL" name="appUrl" value={appUrl} onChange={onChange} />
 			<input type="text" placeholder="Contact Name" name="contactName" value={contactName} onChange={onChange} />
 			<input
