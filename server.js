@@ -15,10 +15,6 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/applications', require('./routes/applications'));
 
-app.get('/', (req, res) => {
-	res.send('online');
-});
-
 //set port
 const PORT = process.env.PORT || 5000;
 
