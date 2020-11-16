@@ -27,8 +27,10 @@ const ApplicationState = (props) => {
 	//get applications
 	const getApplications = async () => {
 		try {
+			//wait for axious to make get request to applications
 			const res = await axios.get('/api/applications');
 
+			//send the response from the get request as the dispatch payload to receive users apps
 			dispatch({ type: GET_APPLICATIONS, payload: res.data });
 		} catch (err) {
 			dispatch({
@@ -40,6 +42,7 @@ const ApplicationState = (props) => {
 
 	//add app
 	const addApplication = async (application) => {
+		//set headers to write to the db
 		const config = {
 			headers: {
 				'Content-Type': 'application/json'
@@ -47,6 +50,7 @@ const ApplicationState = (props) => {
 		};
 
 		try {
+			//send axios post request using the application info and headers from the config variable
 			const res = await axios.post('/api/applications', application, config);
 
 			dispatch({ type: ADD_APPLICATION, payload: res.data });
@@ -61,6 +65,7 @@ const ApplicationState = (props) => {
 	//delete app
 	const deleteApplication = async (id) => {
 		try {
+			//send axios delete request using the apps unique id
 			await axios.delete(`/api/applications/${id}`);
 
 			dispatch({ type: DELETE_APPLICATION, payload: id });
@@ -70,11 +75,11 @@ const ApplicationState = (props) => {
 				payload: err.response.msg
 			});
 		}
-		dispatch({ type: DELETE_APPLICATION, payload: id });
 	};
 
 	//update app
 	const updateApplication = async (application) => {
+		//set headers to send with config
 		const config = {
 			headers: {
 				'Content-Type': 'application/json'
@@ -82,6 +87,7 @@ const ApplicationState = (props) => {
 		};
 
 		try {
+			//make axios put request using apps id and config headers
 			const res = await axios.put(`/api/applications/${application._id}`, application, config);
 
 			dispatch({ type: UPDATE_APPLICATION, payload: res.data });

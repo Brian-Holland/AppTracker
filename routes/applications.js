@@ -10,8 +10,11 @@ const Application = require('../models/Application');
 // @descr       Get all users applications
 // @access      Private
 router.get('/', auth, async (req, res) => {
+	//find applications by users id
 	try {
 		const applications = await Application.find({ user: req.user.id }).sort({ date: -1 });
+
+		//send json response with app info
 		res.json(applications);
 	} catch (err) {
 		console.error(err.message);
@@ -57,8 +60,10 @@ router.post(
 				user: req.user.id
 			});
 
+			//save application in variablee
 			const application = await newApplication.save();
 
+			//respond with json of the application
 			res.json(application);
 		} catch (err) {
 			console.error(err.message);

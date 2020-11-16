@@ -26,8 +26,10 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
+		//pull name and and password from the req
 		const { name, password } = req.body;
 
+		//set the email separately by lowercase to ensure it matches when users try to log in
 		const email = req.body.email.toLowerCase();
 
 		try {
