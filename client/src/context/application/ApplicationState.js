@@ -92,6 +92,7 @@ const ApplicationState = (props) => {
 
 			dispatch({ type: UPDATE_APPLICATION, payload: res.data });
 		} catch (err) {
+			console.log(err);
 			dispatch({
 				type: APPLICATION_ERROR,
 				payload: err.response.msg

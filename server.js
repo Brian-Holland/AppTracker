@@ -15,8 +15,8 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/applications', require('./routes/applications'));
 
-app.get('*', function(req, res) {
-	res.status(404).json({ msg: 'Page does not exist' });
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/client/index.html'));
 });
 
 //set port

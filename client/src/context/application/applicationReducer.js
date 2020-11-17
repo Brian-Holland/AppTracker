@@ -31,12 +31,19 @@ export default (state, action) => {
 				applications: state.applications.map(
 					(application) => (application._id === action.payload._id ? action.payload : application)
 				),
+				filtered: state.filtered.map(
+					(application) => (application._id === action.payload._id ? action.payload : application)
+				),
 				loading: false
 			};
 		case DELETE_APPLICATION:
 			return {
 				...state,
 				applications: [ ...state.applications.filter((application) => application._id !== action.payload) ],
+				filtered:
+					state.filtered === null
+						? null
+						: state.filtered.filter((application) => application._id !== action.payload),
 				loading: false
 			};
 		case CLEAR_APPLICATIONS:
@@ -60,15 +67,9 @@ export default (state, action) => {
 		case FILTER_APPLICATIONS:
 			return {
 				...state,
-				filtered: state.applications.filter((application) => {
-					const regex = new RegExp(`${action.payload}`, 'gi');
-					return (
-						(application.company && application.company.match(regex)) ||
-						(application.positionTitle && application.positionTitle.match(regex)) ||
-						(application.refNumber && application.refNumber.match(regex)) ||
-						(application.contactName && application.contactName.match(regex)) ||
-						(application.notes && application.notes.match(regex))
-					);
+				filtered: state.applications.filter(({ company, positionTitle, refNumber, contactName, notes }) => {
+					const testString = `${company}${positionTitle}${refNumber}${contactName}${notes}`.toLowerCase();
+					return testString.includes(action.payload.toLowerCase());
 				})
 			};
 		case CLEAR_FILTER:

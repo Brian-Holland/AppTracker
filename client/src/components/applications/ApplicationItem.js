@@ -44,7 +44,7 @@ const ApplicationItem = ({ application }) => {
 				{appUrl && (
 					<li>
 						<strong>Job URL</strong>:{' '}
-						<a href={appUrl} target="_blank">
+						<a href={appUrl} target="_blank" rel="noreferrer noopener">
 							{appUrl}
 						</a>
 					</li>
