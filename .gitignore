@@ -11,6 +11,7 @@ node_modules/
 
 # misc
 config/default.json
+config/production.json
 .DS_Store
 .env.local
 .env.development.local

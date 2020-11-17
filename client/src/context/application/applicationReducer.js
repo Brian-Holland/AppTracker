@@ -22,8 +22,7 @@ export default (state, action) => {
 		case ADD_APPLICATION:
 			return {
 				...state,
-				applications: [ action.payload, ...state.applications ],
-				loading: false
+				applications: [ action.payload, ...state.applications ]
 			};
 		case UPDATE_APPLICATION:
 			return {
@@ -31,14 +30,9 @@ export default (state, action) => {
 				applications: state.applications.map(
 					(application) => (application._id === action.payload._id ? action.payload : application)
 				),
-				filtered:
-					state.filtered !== null
-						? state.filtered.map(
-								(application) => (application._id === action.payload._id ? action.payload : application)
-							)
-						: null,
 				loading: false
 			};
+
 		case DELETE_APPLICATION:
 			return {
 				...state,
