@@ -65,7 +65,7 @@ router.post(
 			//sign jswebtoken with payload and secret from config file
 			jwt.sign(
 				payload,
-				config.get('jwtSecret'),
+				config.get('jwtsecret'),
 				{
 					expiresIn: 360000
 				},
