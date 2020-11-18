@@ -89,7 +89,7 @@ const ApplicationState = (props) => {
 		try {
 			//make axios put request using apps id and config headers
 			const res = await axios.put(`/api/applications/${application._id}`, application, config);
-			console.log(res.data);
+
 			dispatch({ type: UPDATE_APPLICATION, payload: res.data });
 		} catch (err) {
 			console.error(err);
