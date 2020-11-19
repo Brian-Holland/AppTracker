@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
+
 import ApplicationItem from './ApplicationItem';
 import ApplicationContext from '../../context/application/applicationContext';
 import Spinner from '../layout/Spinner';

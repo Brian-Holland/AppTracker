@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+
 import PropTypes from 'prop-types';
 import ApplicationContext from '../../context/application/applicationContext';
 
@@ -43,10 +44,7 @@ const ApplicationItem = ({ application }) => {
 				)}
 				{appUrl && (
 					<li>
-						<strong>Job URL</strong>:{' '}
-						<a href={appUrl} target="_blank" rel="noreferrer noopener">
-							{appUrl}
-						</a>
+						<strong>Job URL</strong>: <a href={appUrl}>{appUrl}</a>
 					</li>
 				)}
 				{contactName && (
