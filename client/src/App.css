@@ -357,6 +357,11 @@ button {
 	padding: 1rem 2rem;
 }
 
+.app-form input,
+.app-form button {
+	margin-top: .2rem;
+}
+
 .form-container h1,
 h2,
 h3 {
