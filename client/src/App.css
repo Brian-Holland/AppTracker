@@ -342,9 +342,18 @@ button {
 	border: 2px solid #ccc;
 	border-radius: 10px;
 	box-shadow: 2px 2px #ccc;
+	background: #f4f4f4;
 	max-width: 400px;
 	margin: 3rem auto;
 	overflow: hidden;
+	padding: 1rem 2rem;
+}
+
+.app-form {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	background: #f4f4f4;
+	margin-top: .9rem;
 	padding: 1rem 2rem;
 }
 

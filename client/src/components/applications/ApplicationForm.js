@@ -77,41 +77,89 @@ const ApplicationForm = () => {
 			<h1 className="h2 text-primary text-center">
 				{current ? 'Edit Application Info' : 'Add Application Info'}
 			</h1>
-			<input type="text" placeholder="Company" name="company" value={company} onChange={onChange} required />
-			<input
-				type="text"
-				placeholder="Job Title"
-				name="positionTitle"
-				value={positionTitle}
-				onChange={onChange}
-				required
-			/>
-			<input type="text" placeholder="Job ID" name="refNumber" value={refNumber} onChange={onChange} />
-			<input type="text" placeholder="Date Applied" name="appliedOn" value={appliedOn} onChange={onChange} />
-			<input type="text" placeholder="Application URL" name="appUrl" value={appUrl} onChange={onChange} />
-			<input type="text" placeholder="Contact Name" name="contactName" value={contactName} onChange={onChange} />
-			<input
-				type="text"
-				placeholder="Contact Number/Email"
-				name="contactNumber"
-				value={contactNumber}
-				onChange={onChange}
-			/>
-			<textarea placeholder="Notes" name="notes" value={notes} onChange={onChange} />
-			<div>
+			<div className="app-form">
+				<label htmlFor="company">Company:</label>
 				<input
-					type="submit"
-					value={current ? 'Update Application' : 'Add Application'}
-					className="btn btn-primary btn-block"
+					type="text"
+					id="company"
+					placeholder="Company"
+					name="company"
+					value={company}
+					onChange={onChange}
+					required
 				/>
-			</div>
-			{current && (
+				<label htmlFor="positionTitle">Job Title:</label>
+				<input
+					type="text"
+					id="positionTitle"
+					placeholder="Job Title"
+					name="positionTitle"
+					value={positionTitle}
+					onChange={onChange}
+					required
+				/>
+				<label htmlFor="refNumber">Job ID:</label>
+				<input
+					type="text"
+					id="refNumber"
+					placeholder="Job ID"
+					name="refNumber"
+					value={refNumber}
+					onChange={onChange}
+				/>
+				<label htmlFor="appliedOn">Date Applied:</label>
+				<input
+					type="text"
+					id="appliedOn"
+					placeholder="Date Applied"
+					name="appliedOn"
+					value={appliedOn}
+					onChange={onChange}
+				/>
+				<label htmlFor="appUrl">Application URL:</label>
+				<input
+					type="text"
+					id="appUrl"
+					placeholder="Application URL"
+					name="appUrl"
+					value={appUrl}
+					onChange={onChange}
+				/>
+				<label htmlFor="contactName">Contact Name:</label>
+				<input
+					type="text"
+					id="contactName"
+					placeholder="Contact Name"
+					name="contactName"
+					value={contactName}
+					onChange={onChange}
+				/>
+				<label htmlFor="contactNumber">Contact Number:</label>
+				<input
+					type="text"
+					id="contactNumber"
+					placeholder="Contact Number/Email"
+					name="contactNumber"
+					value={contactNumber}
+					onChange={onChange}
+				/>
+				<label htmlFor="notes">Additional Notes:</label>
+				<textarea id="notes" placeholder="Notes" name="notes" value={notes} onChange={onChange} />
 				<div>
-					<button className="btn btn-light btn-block" onClick={clearAll}>
-						Clear
-					</button>
+					<input
+						type="submit"
+						value={current ? 'Update Application' : 'Add Application'}
+						className="btn btn-primary btn-block"
+					/>
 				</div>
-			)}
+				{current && (
+					<div>
+						<button className="btn btn-light btn-block" onClick={clearAll}>
+							Clear
+						</button>
+					</div>
+				)}
+			</div>
 		</form>
 	);
 };
